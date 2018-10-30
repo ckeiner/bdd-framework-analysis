@@ -1,0 +1,183 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.ckeiner.bdd</groupId>
+    <artifactId>mtframework-analysis</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>mtframework-analysis</name>
+    <organization>
+        <name>Xceptance Software Technologies</name>
+        <url>https://www.xceptance.com/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <surefire.version>2.21.0</surefire.version>
+        <neodymium.version>2.1.0</neodymium.version>
+        <serenity.version>2.0.11</serenity.version>
+        <serenity.maven.version>1.8.0</serenity.maven.version>
+        <surefire.rerunFailingTestsCount>3</surefire.rerunFailingTestsCount>
+        <cucumber.java.version>4.2.0</cucumber.java.version>
+        <cucumber.java8.version>4.2.0</cucumber.java8.version>
+        <cucumber.junit.version>4.2.0</cucumber.junit.version>
+        <spectrum.version>1.2.0</spectrum.version>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <!-- copy all none java files from src/test/java to target/test-classes -->
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+                <directory>${project.build.testSourceDirectory}</directory>
+                <targetPath>${project.build.testOutputDirectory}</targetPath>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+                <configuration>
+                    <forkCount>2</forkCount>
+                    <includes>
+                            <include>**/*.java</include>
+                    </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>net.serenity-bdd.maven.plugins</groupId>       
+                <artifactId>serenity-maven-plugin</artifactId>
+                <version>${serenity.maven.version}</version>
+                <dependencies>
+                     <dependency>
+                        <groupId>net.serenity-bdd</groupId>
+                        <artifactId>serenity-core</artifactId>
+                        <version>${serenity.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>serenity-reports</id>
+                        <phase>post-integration-test</phase>             
+                        <goals>
+                            <goal>aggregate</goal>                       
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+        </plugins>
+    </build>
+    
+    <repositories>
+        <repository>
+            <id>xc-nexus</id>
+            <url>https://lab.xceptance.de/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Neodymium -->
+        <dependency>
+            <groupId>com.xceptance</groupId>
+            <artifactId>neodymium-library</artifactId>
+            <version>${neodymium.version}</version>
+            <scope>test</scope>
+        </dependency>
+    
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    
+        <!-- Cucumber -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.java.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java8</artifactId>
+            <version>${cucumber.java8.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Serenity -->
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>     
+            <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>     
+            <artifactId>serenity-junit</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-screenplay</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        
+        <!-- Spectrum -->
+        <dependency>
+            <groupId>com.greghaskins</groupId>
+            <artifactId>spectrum</artifactId>
+            <version>${spectrum.version}</version>
+        </dependency>
+        
+        <!-- test-bddy -->
+        <dependency>
+            <groupId>com.ckeiner.bdd</groupId>
+            <artifactId>bdd-tester</artifactId>
+            <version>0.0.5-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${surefire.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
