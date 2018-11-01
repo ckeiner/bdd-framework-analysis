@@ -5,6 +5,14 @@ import org.junit.runner.RunWith;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
+/**
+ * Executes the Cucumber features tagged with <code>@Mismatched</code>.<br>
+ * Currently, this is
+ * <code>cucumber_consumption_with_mismatches_data.feature</code>.
+ * 
+ * @author ckeiner
+ *
+ */
 @RunWith(Cucumber.class)
 //@formatter:off
 @CucumberOptions(features = "src/test/java/com/ckeiner/bdd/cucumber/features", glue = {

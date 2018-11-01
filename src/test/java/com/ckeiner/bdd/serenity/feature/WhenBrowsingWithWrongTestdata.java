@@ -15,8 +15,15 @@ import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.junit.annotations.TestData;
 
+/**
+ * Shows how mismatched test data isn't recognized with the
+ * {@link SerenityParameterizedRunner}.
+ * 
+ * @author ckeiner
+ *
+ */
 @RunWith(SerenityParameterizedRunner.class)
-public class WhenBrowsingWithWrongTestdat
+public class WhenBrowsingWithWrongTestdata
 {
     @Steps
     public static BrowsingStep browsingStep;
@@ -44,7 +51,7 @@ public class WhenBrowsingWithWrongTestdat
         Neodymium.getDriver().close();
     }
 
-    public WhenBrowsingWithWrongTestdat(String categoryName, String subCategoryName)
+    public WhenBrowsingWithWrongTestdata(String categoryName, String subCategoryName)
     {
         this.categoryName = categoryName;
         this.subCategoryName = subCategoryName;

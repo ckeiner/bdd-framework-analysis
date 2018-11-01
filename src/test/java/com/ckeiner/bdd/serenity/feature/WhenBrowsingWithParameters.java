@@ -17,6 +17,13 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.junit.annotations.TestData;
 
+/**
+ * Shows how using the Enclosed-Runner can separate features into scenarios with
+ * different test data.
+ * 
+ * @author ckeiner
+ *
+ */
 @RunWith(Enclosed.class)
 public class WhenBrowsingWithParameters
 {

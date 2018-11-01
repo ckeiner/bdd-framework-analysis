@@ -15,6 +15,13 @@ import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.junit.annotations.TestData;
 
+/**
+ * Browses posters catalogue.<br>
+ * This is implemented with a Steps-Library.
+ * 
+ * @author ckeiner
+ *
+ */
 @RunWith(SerenityParameterizedRunner.class)
 public class WhenBrowsingCategories
 {
