@@ -1,4 +1,4 @@
-package com.ckeiner.bdd.spectrum;
+package com.ckeiner.bdd.spectrum.cucumberConsumation;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.example;
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.feature;
@@ -22,14 +22,13 @@ import org.junit.runner.RunWith;
 import com.greghaskins.spectrum.Spectrum;
 
 /**
- * Uses before, after and some System.out.printlns to showcase the execution
- * order.
+ * Uses before and after to proof that JUnits Before and After do not work.
  * 
  * @author ckeiner
  *
  */
 @RunWith(Spectrum.class)
-public class ConsumeCucumbersBeforeAfter
+public class WithGherkinDsl_BeforeAfter
 {
     {
         feature("Cucumber Consumation", () ->
