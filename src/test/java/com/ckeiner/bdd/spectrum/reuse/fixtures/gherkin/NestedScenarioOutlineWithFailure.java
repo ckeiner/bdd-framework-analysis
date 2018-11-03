@@ -1,4 +1,4 @@
-package com.ckeiner.bdd.spectrum.reuse.fixtures.gherkinDSL;
+package com.ckeiner.bdd.spectrum.reuse.fixtures.gherkin;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.example;
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.feature;
@@ -25,7 +25,7 @@ import com.greghaskins.spectrum.Spectrum;
  *
  */
 @RunWith(Spectrum.class)
-public class NestedScenarioOutline
+public class NestedScenarioOutlineWithFailure
 {
     {
         feature("A feature", () ->
@@ -39,6 +39,9 @@ public class NestedScenarioOutline
                                     {
                                         System.out.println("Current Browser is " + browser);
                                         cukes.set(12);
+                                        if(browser.equals("Chrome")) {
+                                            throw new AssertionError();
+                                        }
                                     });
                                 when("I eat 5 cucumbers", () ->
                                     {

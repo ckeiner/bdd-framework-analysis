@@ -54,13 +54,15 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
                 <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                     <forkCount>2</forkCount>
                     <includes>
-                            <include>**/*.java</include>
+                            <include>**/spectrum/reuse/**/*.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
+            
             
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>       
