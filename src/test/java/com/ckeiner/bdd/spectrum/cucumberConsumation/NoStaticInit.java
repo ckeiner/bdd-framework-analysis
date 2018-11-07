@@ -11,8 +11,6 @@ import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.withExamples;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,7 +18,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.ckeiner.CucumberEater;
 import com.greghaskins.spectrum.Spectrum;
+import com.greghaskins.spectrum.Variable;
 
 /**
  * This is not executed since there is no static initialization block containing
@@ -37,42 +37,37 @@ public class NoStaticInit
     {
         feature("Cucumber Consumation", () ->
             {
-                System.out.println("Starting feature");
+                final Variable<CucumberEater> eater = new Variable<>();
                 scenario("Eating less cucumbers than I have ", () ->
                     {
-                        System.out.println("Starting scenario");
-                        final AtomicInteger cukes = new AtomicInteger();
                         given("I have 12 cucumbers", () ->
                             {
-                                System.out.println("Executing scenario");
-                                cukes.set(12);
+                                eater.set(new CucumberEater(12));
                             });
                         when("I eat 5 cucumbers", () ->
                             {
-                                cukes.addAndGet(-5);
+                                eater.get().eat(5);
                             });
                         then("I have 7 cucumbers left", () ->
                             {
-                                assertThat(cukes.get(), equalTo(7));
+                                assertThat(eater.get().cucumbers(), equalTo(7));
                             });
                     });
 
                 scenarioOutline("Eating less cucumbers than I have ", (have, eat, remaining) ->
                     {
                         System.out.println("Starting scenario outline");
-                        final AtomicInteger cukes = new AtomicInteger();
                         given("I have " + have + " cucumbers", () ->
                             {
-                                System.out.println("Executing scenario outline");
-                                cukes.set(have);
+                                eater.set(new CucumberEater(have));
                             });
                         when("I eat " + eat + " cucumbers", () ->
                             {
-                                cukes.addAndGet(-eat);
+                                eater.get().eat(eat);
                             });
                         then("I have " + remaining + " cucumbers left", () ->
                             {
-                                assertThat(cukes.get(), equalTo(remaining));
+                                assertThat(eater.get().cucumbers(), equalTo(remaining));
                             });
                     }, withExamples(example(12, 5, 7), example(20, 5, 15)));
             });

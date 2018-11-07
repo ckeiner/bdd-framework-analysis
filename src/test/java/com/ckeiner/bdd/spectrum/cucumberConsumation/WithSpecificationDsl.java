@@ -7,7 +7,9 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.runner.RunWith;
 
+import com.ckeiner.CucumberEater;
 import com.greghaskins.spectrum.Spectrum;
+import com.greghaskins.spectrum.Variable;
 
 /**
  * Consuming cucumbers with SpecificationDSL.
@@ -21,29 +23,29 @@ public class WithSpecificationDsl
     {
         describe("Cucumber Consumation", () ->
             {
+                final Variable<CucumberEater> eater = new Variable<>();
                 it("Eating less cucumbers than I have ", () ->
                     {
-                        int cukes = 12;
-                        cukes = cukes - 5;
-                        assertThat(cukes, equalTo(7));
+                        eater.set(new CucumberEater(12));
+                        eater.get().eat(5);
+                        assertThat(eater.get().cucumbers(), equalTo(7));
                     });
 
                 describe("Eating less cucumbers than I have with Examples", () ->
                     {
                         it("12, 5, 7", () ->
                             {
-                                int cukes = 12;
-                                cukes = cukes - 5;
-                                assertThat(cukes, equalTo(7));
+                                eater.set(new CucumberEater(12));
+                                eater.get().eat(5);
+                                assertThat(eater.get().cucumbers(), equalTo(7));
                             });
 
                         it("20, 5, 15", () ->
                             {
-                                int cukes = 20;
-                                cukes = cukes - 5;
-                                assertThat(cukes, equalTo(15));
+                                eater.set(new CucumberEater(12));
+                                eater.get().eat(5);
+                                assertThat(eater.get().cucumbers(), equalTo(7));
                             });
-
                     });
             });
     }

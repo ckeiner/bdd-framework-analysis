@@ -11,11 +11,11 @@ import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.withExamples;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.junit.runner.RunWith;
 
+import com.ckeiner.CucumberEater;
 import com.greghaskins.spectrum.Spectrum;
+import com.greghaskins.spectrum.Variable;
 
 /**
  * Consuming cucumbers with GherkinDSL.
@@ -29,37 +29,36 @@ public class WithGherkinDsl
     {
         feature("Cucumber Consumation", () ->
             {
+                final Variable<CucumberEater> eater = new Variable<>();
                 scenario("Eating less cucumbers than I have ", () ->
                     {
-                        final AtomicInteger cukes = new AtomicInteger();
                         given("I have 12 cucumbers", () ->
                             {
-                                cukes.set(12);
+                                eater.set(new CucumberEater(12));
                             });
                         when("I eat 5 cucumbers", () ->
                             {
-                                cukes.addAndGet(-5);
+                                eater.get().eat(5);
                             });
                         then("I have 7 cucumbers left", () ->
                             {
-                                assertThat(cukes.get(), equalTo(7));
+                                assertThat(eater.get().cucumbers(), equalTo(7));
                             });
                     });
 
                 scenarioOutline("Eating less cucumbers than I have ", (have, eat, remaining) ->
                     {
-                        final AtomicInteger cukes = new AtomicInteger();
                         given("I have " + have + " cucumbers", () ->
                             {
-                                cukes.set(have);
+                                eater.set(new CucumberEater(have));
                             });
                         when("I eat " + eat + " cucumbers", () ->
                             {
-                                cukes.addAndGet(-eat);
+                                eater.get().eat(eat);
                             });
                         then("I have " + remaining + " cucumbers left", () ->
                             {
-                                assertThat(cukes.get(), equalTo(remaining));
+                                assertThat(eater.get().cucumbers(), equalTo(remaining));
                             });
                     }, withExamples(example(12, 5, 7), example(20, 5, 15)));
             });

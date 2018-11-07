@@ -2,6 +2,8 @@ package com.ckeiner.bdd.cucumber.support;
 
 import org.junit.Assert;
 
+import com.ckeiner.CucumberEater;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.But;
 import cucumber.api.java.en.Given;
@@ -10,25 +12,25 @@ import cucumber.api.java.en.When;
 
 public class CucumberSteps
 {
-    public int amountCukes;
+    public CucumberEater eater = new CucumberEater();
 
     @Given("^I have (.*) (?:cucumbe(?:rs|r)|cuk(?:es|e))$")
     @And("^I bought (.*) (?:cucumbe(?:rs|r)|cuk(?:es|e))$")
     @But("^I ordered (.*) (?:cucumbe(?:rs|r)|cuk(?:es|e))$")
-    public void givenCucumbers(int cukes)
+    public void givenCucumbers(int cucumbers)
     {
-        amountCukes = cukes;
+        eater.setCucumbers(cucumbers);
     }
 
     @When("^I eat (.*) cucumbe(?:rs|r)$")
-    public void eatenCucumbers(int cukes)
+    public void eatenCucumbers(int eaten)
     {
-        amountCukes -= cukes;
+        eater.eat(eaten);
     }
 
     @Then("^I have (.*) cucumbe(?:rs|r) left$")
-    public void thenCucumbers(int cukes)
+    public void thenCucumbers(int left)
     {
-        Assert.assertEquals(amountCukes, cukes);
+        Assert.assertEquals(left, eater.cucumbers());
     }
 }

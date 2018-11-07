@@ -1,14 +1,16 @@
 package com.ckeiner.bdd.serenity.screenplay.abilities;
 
+import com.ckeiner.CucumberEater;
+
 import net.serenitybdd.screenplay.Ability;
 
 public class EatCukes implements Ability
 {
-    int amountCukes;
+    private CucumberEater eater;
 
     public EatCukes()
     {
-        amountCukes = 0;
+        eater = new CucumberEater();
     }
 
     public static EatCukes eatCucumbers()
@@ -21,22 +23,18 @@ public class EatCukes implements Ability
         return this;
     }
 
-    public void has(int number)
+    public void has(int cucumbers)
     {
-        amountCukes = number;
+        eater.setCucumbers(cucumbers);
     }
 
-    public void eats(int number)
+    public void eats(int eaten)
     {
-        if (number > amountCukes)
-        {
-            throw new IllegalArgumentException("Cannot eat more cukes than you have");
-        }
-        amountCukes = amountCukes - number;
+        eater.eat(eaten);
     }
 
     public int hasLeft()
     {
-        return amountCukes;
+        return eater.cucumbers();
     }
 }

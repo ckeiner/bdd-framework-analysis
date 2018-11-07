@@ -35,6 +35,7 @@
         <cucumber.java8.version>4.2.0</cucumber.java8.version>
         <cucumber.junit.version>4.2.0</cucumber.junit.version>
         <spectrum.version>1.2.0</spectrum.version>
+        <test.bddy.version>0.0.6</test.bddy.version>
     </properties>
 
     <build>
@@ -57,7 +58,7 @@
                     <useSystemClassLoader>false</useSystemClassLoader>
                     <forkCount>2</forkCount>
                     <includes>
-                            <include>**/spectrum/reuse/**/*.java</include>
+                            <include>**/*.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
@@ -159,9 +160,9 @@
         
         <!-- test-bddy -->
         <dependency>
-            <groupId>com.ckeiner.bdd</groupId>
-            <artifactId>bdd-tester</artifactId>
-            <version>0.0.5-SNAPSHOT</version>
+            <groupId>com.ckeiner</groupId>
+            <artifactId>test-bddy</artifactId>
+            <version>${test.bddy.version}</version>
         </dependency>
     </dependencies>
 

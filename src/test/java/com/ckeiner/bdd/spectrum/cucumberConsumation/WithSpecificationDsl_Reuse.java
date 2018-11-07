@@ -7,6 +7,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.runner.RunWith;
 
+import com.ckeiner.CucumberEater;
 import com.greghaskins.spectrum.Spectrum;
 
 /**
@@ -24,7 +25,6 @@ public class WithSpecificationDsl_Reuse
             {
                 it("Eating less cucumbers than I have ", () ->
                     {
-
                         eatCukes(12, 5, 7);
                     });
 
@@ -45,8 +45,9 @@ public class WithSpecificationDsl_Reuse
 
     public static void eatCukes(int have, int eat, int left)
     {
-        int cukes = have;
-        cukes = cukes - eat;
-        assertThat(cukes, equalTo(left));
+        CucumberEater eater = new CucumberEater(12);
+        eater.eat(5);
+        assertThat(eater.cucumbers(), equalTo(7));
+
     }
 }
