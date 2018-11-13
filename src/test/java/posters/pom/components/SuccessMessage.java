@@ -13,8 +13,7 @@ public class SuccessMessage extends AbstractComponent
     @Override
     public void isComponentAvailable()
     {
-        // TODO Auto-generated method stub
-
+        successMessage.shouldBe(visible);
     }
 
     public void validateSuccessMessage(String message)

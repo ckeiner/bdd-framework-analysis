@@ -25,4 +25,19 @@ public class CucumberData
     {
         return "Have: " + cucumbers + ", Eat: " + eaten + ", Left: " + left;
     }
+
+    public void eat(int numberEaten)
+    {
+        eater.eat(numberEaten);
+    }
+
+    public int cucumbers()
+    {
+        return eater.cucumbers();
+    }
+
+    public void setCucumbers(int cucumbers)
+    {
+        this.cucumbers = cucumbers;
+    }
 }

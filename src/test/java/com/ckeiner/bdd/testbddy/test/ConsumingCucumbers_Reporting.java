@@ -1,18 +1,17 @@
-package com.ckeiner.bdd.testbddy;
+package com.ckeiner.bdd.testbddy.test;
 
 import static com.ckeiner.testbddy.api.BddSuite.feature;
 import static com.ckeiner.testbddy.api.BddSuite.given;
 import static com.ckeiner.testbddy.api.BddSuite.scenario;
-import static com.ckeiner.testbddy.api.BddSuite.withData;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.ckeiner.CucumberEater;
-import com.ckeiner.bdd.testbddy.testdata.CucumberData;
+import com.ckeiner.testbddy.api.AbstractExtentReportTest;
 import com.ckeiner.testbddy.api.DynamicHolder;
 
-public class ConsumingCucumbers
+public class ConsumingCucumbers_Reporting extends AbstractExtentReportTest
 {
     @Test
     public void canConsumeCucumbers()
@@ -30,16 +29,26 @@ public class ConsumingCucumbers
                         .then("I have 7 cucumbers left", () -> {
                             Assert.assertEquals(7, cucumberHolder.get().cucumbers());
                         })
-                    ),
-                () -> scenario("Eating more cucumbers than I have",
+                    )
+            ).test();
+        //@formatter:on
+    }
+
+    @Test
+    public void throwError()
+    {
+        DynamicHolder<CucumberEater> cucumberHolder = new DynamicHolder<CucumberEater>();
+        //@formatter:off
+        feature("Erroneous cucumber consumption",
+                () -> scenario("Eating erroneous cucumbers",
                         given("I have 12 cucumbers", () -> {
                             cucumberHolder.set(new CucumberEater(12));
                         })
                         .when("I eat 20 cucumbers", () -> {
                             cucumberHolder.get().eat(20);
                         })
-                        .then("I have 12 cucumbers left", () -> {
-                            Assert.assertEquals(12, cucumberHolder.get().cucumbers());
+                        .then("I have 7 cucumbers left", () -> {
+                            Assert.assertEquals(7, cucumberHolder.get().cucumbers());
                         })
                     )
             ).test();
@@ -47,21 +56,21 @@ public class ConsumingCucumbers
     }
 
     @Test
-    public void canConsumeCucumbersWithTestData()
+    public void throwIntentionalException()
     {
         DynamicHolder<CucumberEater> cucumberHolder = new DynamicHolder<CucumberEater>();
         //@formatter:off
-        feature("Cucumber consumption",
-                () -> scenario("Eating less cucumbers than I have",
-                        withData(new CucumberData(12, 5, 7), new CucumberData(12, 20, 12))
-                        .given("I have 12 cucumbers", (data) -> {
-                            cucumberHolder.set(new CucumberEater(data.cucumbers));
+        feature("Cucumber consumption with intentional failure",
+                () -> scenario("Eating cucumbers",
+                        given("I have 12 cucumbers", () -> {
+                            cucumberHolder.set(new CucumberEater(12));
                         })
-                        .when("I eat 5 cucumbers", (data) -> {
-                            cucumberHolder.get().eat(data.eaten);
+                        .when("I eat 20 cucumbers", () -> {
+                            cucumberHolder.get().eat(20);
+                            throw new IllegalArgumentException("Intentional Exception");
                         })
-                        .then("I have 7 cucumbers left", (data) -> {
-                            Assert.assertEquals(data.left, cucumberHolder.get().cucumbers());
+                        .then("I have 7 cucumbers left", () -> {
+                            Assert.assertEquals(7, cucumberHolder.get().cucumbers());
                         })
                     )
             ).test();
