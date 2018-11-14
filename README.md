@@ -1,3 +1,3 @@
-# MT-Framework-Analysis
+# BDD-Framework-Analysis
 
-This project showcases some of the problems outlined in my masterthesis.
+This project showcases the problems outlined in my masterthesis.
