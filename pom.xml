@@ -35,7 +35,7 @@
         <cucumber.java8.version>4.2.0</cucumber.java8.version>
         <cucumber.junit.version>4.2.0</cucumber.junit.version>
         <spectrum.version>1.2.0</spectrum.version>
-        <test.bddy.version>0.0.6</test.bddy.version>
+        <test.bddy.version>0.0.7</test.bddy.version>
     </properties>
 
     <build>

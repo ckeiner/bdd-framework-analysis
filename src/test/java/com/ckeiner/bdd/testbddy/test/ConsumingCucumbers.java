@@ -10,9 +10,10 @@ import org.junit.Test;
 
 import com.ckeiner.CucumberEater;
 import com.ckeiner.bdd.testbddy.testdata.CucumberData;
+import com.ckeiner.testbddy.api.AbstractExtentReportTest;
 import com.ckeiner.testbddy.api.DynamicHolder;
 
-public class ConsumingCucumbers
+public class ConsumingCucumbers extends AbstractExtentReportTest
 {
     @Test
     public void canConsumeCucumbers()
@@ -36,27 +37,6 @@ public class ConsumingCucumbers
     }
 
     @Test
-    public void canConsumeCucumbersWithTestData()
-    {
-        //@formatter:off
-        feature("Cucumber consumption",
-                () -> scenario("Eating less cucumbers than I have",
-                        withData(new CucumberData(12, 5, 7),new CucumberData(12, 20, 12))
-                        .given("I have 12 cucumbers", (data) -> {
-                            data.setCucumbers(data.cucumbers);
-                        })
-                        .when("I eat 5 cucumbers", (data) -> {
-                            data.eat(data.eaten);
-                        })
-                        .then("I have 7 cucumbers left", (data) -> {
-                            Assert.assertEquals(data.left, data.cucumbers());
-                        })
-                    )
-            ).test();
-        //@formatter:on
-    }
-
-    @Test
     public void canConsumeErroneousCucumbers()
     {
         DynamicHolder<CucumberEater> cucumberHolder = new DynamicHolder<CucumberEater>();
@@ -72,8 +52,30 @@ public class ConsumingCucumbers
                         .then("I have 7 cucumbers left", () -> {
                             Assert.assertEquals(7, cucumberHolder.get().cucumbers());
                         })
+                        )
+                ).test();
+        //@formatter:on
+    }
+
+    @Test
+    public void canConsumeCucumbersWithTestData()
+    {
+        //@formatter:off
+        feature("Cucumber consumption",
+                () -> scenario("Eating less cucumbers than I have",
+                        withData(new CucumberData(12, 5, 7), new CucumberData(12, 20, 12))
+                        .given("I have <data.cucumbers> cucumbers", (data) -> {
+                            data.setCucumbers(data.cucumbers);
+                        })
+                        .when("I eat <data.eaten> cucumbers", (data) -> {
+                            data.eat(data.eaten);
+                        })
+                        .then("I have <data.left> cucumbers left", (data) -> {
+                            Assert.assertEquals(data.left, data.cucumbers());
+                        })
                     )
             ).test();
         //@formatter:on
     }
+
 }

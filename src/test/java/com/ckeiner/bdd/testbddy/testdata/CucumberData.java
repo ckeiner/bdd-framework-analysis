@@ -38,6 +38,6 @@ public class CucumberData
 
     public void setCucumbers(int cucumbers)
     {
-        this.cucumbers = cucumbers;
+        eater.setCucumbers(cucumbers);
     }
 }
