@@ -5,6 +5,12 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
+
+import java.util.Random;
+
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 
 import io.qameta.allure.Step;
 
@@ -65,5 +71,46 @@ public class CategoryPage extends AbstractBrowsingPage
         // Click the product link to open the product detail page
         $("#productOverview .thumbnails .thumbnail a > img.pImage[title='" + productName + "']").scrollTo().click();
         return new ProductdetailPage();
+    }
+
+    /**
+     * @param row
+     * @param column
+     * @return
+     */
+    @Step("get a product name by position in grid")
+    public String getProductNameByPosition(int row, int column)
+    {
+        SelenideElement rowContainer = $("#productOverview").findAll(".thumbnails.row").get(row - 1);
+        return rowContainer.find("h4.pName", column - 1).text();
+    }
+
+    /**
+     * @param row
+     * @param column
+     * @return
+     */
+    @Step("click on a product by position in grid")
+    public ProductdetailPage clickProductByPosition(int row, int column)
+    {
+        // Open the product detail page
+        // Clicks a product by position. Because of the html code, this requires x and y
+        // coordinates.
+        SelenideElement rowContainer = $$("#productOverview > .row").get(row - 1);
+        rowContainer.find(".thumbnail", column - 1).scrollTo().click();
+        return new ProductdetailPage();
+    }
+
+    public String getRandomProductDetailName(Random random)
+    {
+        ElementsCollection rows = $("#productOverview").findAll(".thumbnails.row");
+        int numberOfRows = rows.size();
+        int productIndexX = random.nextInt(numberOfRows);
+
+        SelenideElement row = rows.get(productIndexX);
+        int numberOfColumns = row.findAll(".thumbnail").filter(visible).size();
+        int productIndexY = random.nextInt(numberOfColumns);
+
+        return getProductNameByPosition(productIndexX + 1, productIndexY + 1);
     }
 }

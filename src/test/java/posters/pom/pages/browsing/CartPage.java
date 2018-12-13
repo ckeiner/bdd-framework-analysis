@@ -268,11 +268,6 @@ public class CartPage extends AbstractBrowsingPage
         return new ProductdetailPage();
     }
 
-    private void clickCheckoutButton()
-    {
-        $("#btnStartCheckout").scrollTo().click();
-    }
-
     /**
      * @return
      */
