@@ -8,7 +8,7 @@ import posters.pom.pages.AbstractPageObject;
 import posters.pom.pages.browsing.CategoryPage;
 import posters.pom.pages.browsing.HomePage;
 
-public class BrowsingStep
+public class BrowsingSteps
 {
     public AbstractPageObject lastPage;
 

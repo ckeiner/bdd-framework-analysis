@@ -7,7 +7,7 @@ import cucumber.api.java.en.When;
 import posters.pom.pages.browsing.HomePage;
 import posters.pom.util.Util;
 
-public class BackgroundStep
+public class BackgroundSteps
 {
     @Given("^(.*) is opened$")
     public void openBrowser(String browserProfile)

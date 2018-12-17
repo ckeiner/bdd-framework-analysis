@@ -10,7 +10,7 @@ import posters.pom.pages.browsing.CategoryPage;
 import posters.pom.pages.browsing.HomePage;
 import posters.pom.pages.browsing.ProductdetailPage;
 
-public class OrderSteps
+public class CartSteps
 {
     public Random random = new Random();
 
