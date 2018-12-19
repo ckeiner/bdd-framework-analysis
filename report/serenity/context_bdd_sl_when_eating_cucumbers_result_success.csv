@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"When eating cucumbers","Eating cucumbers","SUCCESS","2018-12-19T12:17:09.651434+01:00[Europe/Berlin]","0.0","1.56"
+"When eating cucumbers","Eating dynamic cucumbers","SUCCESS","2018-12-19T12:17:15.015643+01:00[Europe/Berlin]","0.0","0.04"

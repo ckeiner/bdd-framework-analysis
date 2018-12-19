@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"When browsing categories","Browse to top level category","SUCCESS","2018-12-19T12:17:27.740017+01:00[Europe/Berlin]","0.0","6.84"
+"When browsing categories","Browse to sub category","SUCCESS","2018-12-19T12:17:27.741036+01:00[Europe/Berlin]","0.0","5.1"

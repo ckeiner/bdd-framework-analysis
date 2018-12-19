@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"When browsing with wrong testdata","Browse to top level category","ERROR","2018-12-19T12:17:27.274573+01:00[Europe/Berlin]","0.0","0.01"
+"When browsing with wrong testdata","Browse to sub category","ERROR","2018-12-19T12:17:27.275734+01:00[Europe/Berlin]","0.0","0.01"

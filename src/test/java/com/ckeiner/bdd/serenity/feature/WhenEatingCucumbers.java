@@ -10,6 +10,8 @@ import static net.serenitybdd.screenplay.GivenWhenThen.then;
 import static net.serenitybdd.screenplay.GivenWhenThen.when;
 import static org.hamcrest.Matchers.equalTo;
 
+import java.util.Random;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -43,6 +45,17 @@ public class WhenEatingCucumbers
         givenThat(kim).wasAbleTo(get(12).cucumbers());
         when(kim).attemptsTo(eat(5).cucumbers());
         then(kim).should(seeThat(remainingCucumbersAre(), equalTo(7)));
+    }
+
+    @Test
+    public void eating_dynamic_cucumbers()
+    {
+        Random random = new Random();
+        int eat = random.nextInt();
+        int have = random.nextInt(eat);
+        givenThat(kim).wasAbleTo(get(eat).cucumbers());
+        when(kim).attemptsTo(eat(have).cucumbers());
+        then(kim).should(seeThat(remainingCucumbersAre(), equalTo(eat - have)));
     }
 
 }

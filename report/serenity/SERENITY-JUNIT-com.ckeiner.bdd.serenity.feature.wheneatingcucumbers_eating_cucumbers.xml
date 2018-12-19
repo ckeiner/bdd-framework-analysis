@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" skipped="0" tests="2" time="1.6" timestamp="2018-12-19 12:17:09"><testcase classname="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" name="Eating cucumbers"/><testcase classname="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" name="Eating dynamic cucumbers"><error message="bound must be positive" type="java.lang.IllegalArgumentException">bound must be positive</error><system-err>bound must be positive
+com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers.eating_dynamic_cucumbers(WhenEatingCucumbers.java:55)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</system-err></testcase></testsuite>
