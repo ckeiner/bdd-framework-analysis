@@ -13,10 +13,10 @@ import cucumber.api.junit.Cucumber;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/java/com/ckeiner/bdd/cucumber/features", glue = {
-        "com.ckeiner.bdd.cucumber.features", "com.ckeiner.bdd.cucumber.support" }, tags = "@AddToCart", plugin = {
+        "com.ckeiner.bdd.cucumber.features", "com.ckeiner.bdd.cucumber.support" }, tags = "@Web and @Chrome", plugin = {
                 "pretty", // console // output
                 "html:target/cucumber-report/", // html report
 })
-public class SomeFeaturesTest
+public class ChromeFeatureTest
 {
 }
