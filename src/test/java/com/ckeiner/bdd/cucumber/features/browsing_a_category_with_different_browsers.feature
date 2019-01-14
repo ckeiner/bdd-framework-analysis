@@ -14,5 +14,5 @@ Feature: Browsing a Category with Background
 
     @Firefox
     Examples: 
-      | browser | category |
-      | Firefox | Flowers  |
+      | browser | category         |
+      | Firefox | World of Nature  |
