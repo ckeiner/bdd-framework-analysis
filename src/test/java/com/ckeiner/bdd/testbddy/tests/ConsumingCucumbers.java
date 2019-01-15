@@ -3,7 +3,7 @@ package com.ckeiner.bdd.testbddy.tests;
 import static com.ckeiner.testbddy.api.BddSuite.feature;
 import static com.ckeiner.testbddy.api.BddSuite.given;
 import static com.ckeiner.testbddy.api.BddSuite.scenario;
-import static com.ckeiner.testbddy.api.BddSuite.withData;
+import static com.ckeiner.testbddy.api.BddSuite.with;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -61,7 +61,7 @@ public class ConsumingCucumbers
         //@formatter:off
         feature("Cucumber consumption",
                 () -> scenario("Eating less cucumbers than I have",
-                        withData(new CucumberData(12, 5, 7), new CucumberData(12, 20, 12))
+                        with(new CucumberData(12, 5, 7), new CucumberData(12, 20, 12))
                         .given("I have <data.cucumbers> cucumbers", (data) -> {
                             data.setCucumbers(data.cucumbers);
                         })

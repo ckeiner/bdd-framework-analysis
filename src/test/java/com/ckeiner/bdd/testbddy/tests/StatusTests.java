@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.ckeiner.CucumberEater;
-import com.ckeiner.testbddy.core.bdd.status.PendingRunnable;
+import com.ckeiner.testbddy.api.PendingRunnable;
 
 public class StatusTests
 {

@@ -4,7 +4,7 @@ import static com.ckeiner.testbddy.api.BddSuite.feature;
 import static com.ckeiner.testbddy.api.BddSuite.given;
 import static com.ckeiner.testbddy.api.BddSuite.scenario;
 import static com.ckeiner.testbddy.api.BddSuite.then;
-import static com.ckeiner.testbddy.api.BddSuite.withData;
+import static com.ckeiner.testbddy.api.BddSuite.with;
 
 import org.junit.Test;
 
@@ -28,7 +28,7 @@ public class BrowseCategory
         //@formatter:off
         feature("Can browse categories",
                 () -> scenario("I browse a category",
-                        withData("World of Nature")
+                        with("World of Nature")
                         .given(setUp())
                         .when("I open <data>", (data) -> {
                             homepage = new HomePage();
@@ -40,7 +40,7 @@ public class BrowseCategory
                         .then(tearDown())
                     ),
                 () -> scenario("I browse a subcategory",
-                        withData(new ClickedCategory("World of Nature", "Flowers"))
+                        with(new ClickedCategory("World of Nature", "Flowers"))
                         .given(setUp())
                         .when("I open <data.subCategoryName> of <data.categoryName>", (data) -> {
                             homepage = new HomePage();

@@ -3,7 +3,7 @@ package com.ckeiner.bdd.testbddy.tests;
 import static com.ckeiner.testbddy.api.BddSuite.feature;
 import static com.ckeiner.testbddy.api.BddSuite.given;
 import static com.ckeiner.testbddy.api.BddSuite.scenario;
-import static com.ckeiner.testbddy.api.BddSuite.withData;
+import static com.ckeiner.testbddy.api.BddSuite.with;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -37,7 +37,7 @@ public class DynamicDataUsage
                 },
                 () -> {
                     return scenario("Use test data to save dynamic parts",
-                            withData(new TestData<String>(), new TestData<String>())
+                            with(new TestData<String>(), new TestData<String>())
                             .given("I set the variable", (data) -> {
                                 Assert.assertNull("Dynamic Part should be null", data.dynamicPart);
                                 data.dynamicPart = "Some String";
@@ -66,7 +66,7 @@ public class DynamicDataUsage
                 {
                     Variable<Integer> someInt = new Variable<>();
                     return scenario("Outline with container variable",
-                            withData("first run", "second run")
+                            with("first run", "second run")
                             .given("I set the variable", () -> {
                                 Assert.assertNull("Variable should be null", someInt.get());
                                 someInt.set(12);
