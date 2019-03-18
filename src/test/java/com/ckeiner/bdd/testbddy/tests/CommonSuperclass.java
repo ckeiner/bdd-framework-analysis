@@ -1,8 +1,8 @@
 package com.ckeiner.bdd.testbddy.tests;
 
-import static com.ckeiner.testbddy.api.BddSuite.feature;
-import static com.ckeiner.testbddy.api.BddSuite.scenario;
-import static com.ckeiner.testbddy.api.BddSuite.with;
+import static com.xceptance.testbddy.api.BddSuite.feature;
+import static com.xceptance.testbddy.api.BddSuite.scenario;
+import static com.xceptance.testbddy.api.BddSuite.with;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,8 +1,8 @@
 package com.ckeiner.bdd.testbddy.tests;
 
-import static com.ckeiner.testbddy.api.BddSuite.feature;
-import static com.ckeiner.testbddy.api.BddSuite.given;
-import static com.ckeiner.testbddy.api.BddSuite.scenario;
+import static com.xceptance.testbddy.api.BddSuite.feature;
+import static com.xceptance.testbddy.api.BddSuite.given;
+import static com.xceptance.testbddy.api.BddSuite.scenario;
 
 import org.junit.Assert;
 import org.junit.Test;

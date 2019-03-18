@@ -1,5 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" skipped="0" tests="2" time="1.6" timestamp="2018-12-19 12:17:09"><testcase classname="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" name="Eating cucumbers"/><testcase classname="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" name="Eating dynamic cucumbers"><error message="bound must be positive" type="java.lang.IllegalArgumentException">bound must be positive</error><system-err>bound must be positive
-com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers.eating_dynamic_cucumbers(WhenEatingCucumbers.java:55)
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="2" failures="0" name="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" skipped="0" tests="2" time="0.06" timestamp="2019-03-18 01:36:14"><testcase classname="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" name="Eating cucumbers"><error type="java.lang.NullPointerException"/><system-err>null
+org.apache.commons.lang3.SystemUtils.isJavaVersionAtLeast(SystemUtils.java:1654)
+org.apache.commons.lang3.ClassUtils.isAssignable(ClassUtils.java:760)
+com.ckeiner.bdd.serenity.screenplay.performables.Get.get(Get.java:34)
+com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers.eating_cucumbers(WhenEatingCucumbers.java:45)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</system-err></testcase><testcase classname="com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers" name="Eating dynamic cucumbers"><error type="java.lang.NullPointerException"/><system-err>null
+org.apache.commons.lang3.SystemUtils.isJavaVersionAtLeast(SystemUtils.java:1654)
+org.apache.commons.lang3.ClassUtils.isAssignable(ClassUtils.java:760)
+com.ckeiner.bdd.serenity.screenplay.performables.Get.get(Get.java:34)
+com.ckeiner.bdd.serenity.feature.WhenEatingCucumbers.eating_dynamic_cucumbers(WhenEatingCucumbers.java:56)
 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

@@ -1,14 +1,14 @@
 package com.ckeiner.bdd.testbddy.tests;
 
-import static com.ckeiner.testbddy.api.BddSuite.feature;
-import static com.ckeiner.testbddy.api.BddSuite.given;
-import static com.ckeiner.testbddy.api.BddSuite.scenario;
+import static com.xceptance.testbddy.api.BddSuite.feature;
+import static com.xceptance.testbddy.api.BddSuite.given;
+import static com.xceptance.testbddy.api.BddSuite.scenario;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.ckeiner.CucumberEater;
-import com.ckeiner.testbddy.api.PendingRunnable;
+import com.xceptance.testbddy.api.PendingRunnable;
 
 public class StatusTests
 {
@@ -163,7 +163,20 @@ public class StatusTests
         //@formatter:off
         feature("A scenario is pending",
                 () -> scenario("Eating less cucumbers than I have")
+                .wip()
             ).test();
         //@formatter:on
+    }
+
+    @Test
+    public void statusShowcase()
+    {
+        feature("Feature is WIP", () -> scenario("Eating less cucumbers than I have", given("I have 12 cucumbers", () -> {
+            cucumberEater = new CucumberEater(12);
+        }).when("I eat 5 cucumbers", () -> {
+            cucumberEater.eat(5);
+        }).skip().then("I have 7 cucumbers left", () -> {
+            Assert.assertEquals(7, cucumberEater.cucumbers());
+        }).ignore()).wip()).wip().test();
     }
 }

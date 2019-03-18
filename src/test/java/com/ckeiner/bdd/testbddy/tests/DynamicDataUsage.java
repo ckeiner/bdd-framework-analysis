@@ -1,15 +1,15 @@
 package com.ckeiner.bdd.testbddy.tests;
 
-import static com.ckeiner.testbddy.api.BddSuite.feature;
-import static com.ckeiner.testbddy.api.BddSuite.given;
-import static com.ckeiner.testbddy.api.BddSuite.scenario;
-import static com.ckeiner.testbddy.api.BddSuite.with;
+import static com.xceptance.testbddy.api.BddSuite.feature;
+import static com.xceptance.testbddy.api.BddSuite.given;
+import static com.xceptance.testbddy.api.BddSuite.scenario;
+import static com.xceptance.testbddy.api.BddSuite.with;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ckeiner.testbddy.core.throwables.errors.FeatureError;
 import com.greghaskins.spectrum.Variable;
+import com.xceptance.testbddy.core.throwables.errors.FeatureError;
 
 public class DynamicDataUsage
 {

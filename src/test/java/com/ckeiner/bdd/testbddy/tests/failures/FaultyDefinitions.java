@@ -1,15 +1,15 @@
 package com.ckeiner.bdd.testbddy.tests.failures;
 
-import static com.ckeiner.testbddy.api.BddSuite.feature;
-import static com.ckeiner.testbddy.api.BddSuite.given;
-import static com.ckeiner.testbddy.api.BddSuite.scenario;
+import static com.xceptance.testbddy.api.BddSuite.feature;
+import static com.xceptance.testbddy.api.BddSuite.given;
+import static com.xceptance.testbddy.api.BddSuite.scenario;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ckeiner.testbddy.core.bdd.steps.Steps;
-import com.ckeiner.testbddy.core.throwables.errors.FeatureError;
-import com.ckeiner.testbddy.core.throwables.exceptions.FeatureException;
+import com.xceptance.testbddy.core.bdd.steps.Steps;
+import com.xceptance.testbddy.core.throwables.errors.FeatureError;
+import com.xceptance.testbddy.core.throwables.exceptions.FeatureException;
 
 public class FaultyDefinitions
 {

@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.ckeiner.bdd</groupId>
-    <artifactId>mt-framework-analysis</artifactId>
+    <artifactId>bdd-framework-analysis</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>mt-framework-analysis</name>
+    <name>bdd-framework-analysis</name>
     <organization>
         <name>Xceptance Software Technologies</name>
         <url>https://www.xceptance.com/</url>
@@ -95,6 +95,10 @@
             <id>xc-nexus</id>
             <url>https://lab.xceptance.de/nexus/content/groups/public</url>
         </repository>
+        <repository>
+            <id>xceptance-releases</id>
+            <url>https://lab.xceptance.de/nexus/content/repositories/releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -160,7 +164,7 @@
         
         <!-- test-bddy -->
         <dependency>
-            <groupId>com.ckeiner</groupId>
+            <groupId>com.xceptance</groupId>
             <artifactId>test-bddy</artifactId>
             <version>${test.bddy.version}</version>
         </dependency>
